@@ -1,6 +1,7 @@
 //this is the main file for backend here backend starts(for starting the backend we write in current path of comand prompt(nodemon index.js) here nodemon is installed)
 //we use here express which is server and installed here
 //here we used dotenv file in which we have connected this backend to the database(mongoose{mail:girijeshk392@gmail.com}) and required cluster
+//this project is hosted on the github with account {girijesh96} username and email is {girijeshkr121@gmail.com}
 //here we included mongoose that is database which is online connected as well as locally on the system
 //here we use authRoute which is the route of {routes auth.js} file
 // here we use userRoute which is the route of {routes users.js} file
