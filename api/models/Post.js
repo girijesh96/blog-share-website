@@ -1,30 +1,32 @@
-const mongoose=require("mongoose")
+//it is the Post model for the schema of post in which fields are title,description,photo,username,categories,and timestamps
 
-const PostSchema=new mongoose.Schema({
+const mongoose=require("mongoose")//incuded mongodb
 
-    title:{
+const PostSchema=new mongoose.Schema({//define schema
+
+    title:{             //it is the title which is type of string,and unique,and required
         type:String,
         reuired:true,
         unique:true
     },
-    desc:{
+    desc:{              //it is description and type is string and it is required
         type:String,
         reuired:true,
     },
-    photo:{
+    photo:{             //it is photo field which is type of string and it is reuired
         type:String,
         reuired:true,
     },
-    username:{
+    username:{         //it is username field which is type of string and it is required 
         type:String,
         reuired:true,
     },
-    categories:{
+    categories:{        //it is type of categories which is type of array and it is not required
         type:Array,
         required:false
     }
 },
-    {timestamps:true}
+    {timestamps:true}   //it is timestamp which will be in the Post table
 );
 
 module.exports=mongoose.model("Post",PostSchema);

@@ -1,6 +1,24 @@
-import "./sidebar.css"
+//this is the sidebar of the all page
+
+import "./sidebar.css";
+import {useEffect,useState} from "react";
+import axios from "axios"
+import { Link } from "react-router-dom";
+import { useLocation } from "react-router";
 
 export default function Sidebar(){
+    const[cats,setCats]=useState([]);
+    const location=useLocation();
+    console.log(location)
+
+    useEffect(()=>{
+        const getCats=async()=>{
+            const res=await axios.get("/categories")
+            setCats(res.data);
+        }
+        getCats();
+    },[]);
+
     return(
         <div className="sidebar">
             <div className="sidebarItem">
@@ -15,18 +33,19 @@ export default function Sidebar(){
             <div className="sidebarItem">
                 <span className="sidebarTitle">Categories</span>
                 <ul className="sidebarList">
-                    <li className="sidebarListItem">Life</li>
-                    <li className="sidebarListItem">Music</li>
-                    <li className="sidebarListItem">Style</li>
-                    <li className="sidebarListItem">sport</li>
-                    <li className="sidebarListItem">Tech</li>
-                    <li className="sidebarListItem">Cinema</li>
+                    {
+                        cats.map((c)=>(
+                            <Link to={`/?cat=${c.name}`} className="link"> {/* it fetches all categories and print in the sidebar menu */}
+                            <li className="sidebarListItem">{c.name}</li>
+                            </Link>
+                        ))
+                    }
                 </ul>
 
             </div>
             <div className="sidebarItem">
                 <span className="sidebarTitle">Follow Us</span>
-                    <div className="sidebarSocial">
+                    <div className="sidebarSocial">                              {/* this is the links of all the social media */}                 
                          <i className="sidebarIcon fab fa-facebook-square"></i>
                         <i className="sidebarIcon fab fa-twitter"></i>
                         <i className="sidebarIcon fab fa-pinterest"></i>
